@@ -1,4 +1,4 @@
-# PapayeTasks 🐈
+# PapayeCompression 🐈
 
 ## Explanation
 Small image compression app app made with :
