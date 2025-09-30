@@ -17,7 +17,18 @@ export const ServerRoute = createServerFileRoute("/upload").methods({
       if(!formDataQuality) {
         console.warn("Qualité non spécifiée, 50% par défaut");
       }else {
-        quality = parseInt(formDataQuality.toString(), 10);
+        try {
+          quality = parseInt(formDataQuality.toString(), 10) || 50;
+        }catch(e) {
+          throw new Error("Erreur lors de la réception de la qualité")
+        }
+      }
+
+      if(quality <= 0) {
+        throw new Error("La qualité doit être supérieure à 0%")
+      }
+      if(quality > 100) {
+        throw new Error("La qualité doit être inférieure à 100%")
       }
 
       // Fetching metadata, initializing sharp

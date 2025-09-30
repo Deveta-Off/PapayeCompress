@@ -8,7 +8,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import appCss from "../index.css?url";
-import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export interface RouterAppContext {}
 
@@ -23,7 +23,16 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "My App",
+        title: "PapayeCompress 🐈",
+      },
+      {
+        property: "og:title",
+        content: "PapayeCompress 🐈",
+      },
+      {
+        property: "og:description",
+        content:
+          "Compressez vos images rapidement et gratuitement avec PapayeCompress 🐈",
       },
     ],
     links: [
