@@ -45,6 +45,7 @@ function HomeComponent() {
             ...s,
             uploadError: json["error"],
             isUploading: false,
+            originalSize: 0,
           }));
         }
       }
@@ -83,7 +84,7 @@ function HomeComponent() {
       formData.append("file", file);
       formData.append("quality", state.chosenQuality.toString());
 
-      const response = await axios.post("/upload", formData, {
+      const response = await axios.post("/api/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -131,7 +132,6 @@ function HomeComponent() {
           <span className="font-medium">JPG, PNG, WEBP</span>
         </p>
       </div>
-
       {/* Upload zone */}
       <form className="w-full select-none">
         <label
@@ -181,7 +181,7 @@ function HomeComponent() {
             <input
               type="range"
               id="quality_range"
-              min="0"
+              min="1"
               max="100"
               defaultValue={state.chosenQuality}
               className="w-full h-2 rounded-lg bg-gray-200 appearance-none cursor-pointer accent-accent"
@@ -288,5 +288,3 @@ function formatFileSize(bytes: number) {
   const gb = mb / 1024;
   return gb.toFixed(2) + " Go";
 }
-
-export default HomeComponent;
