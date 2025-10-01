@@ -84,7 +84,7 @@ function HomeComponent() {
       formData.append("file", file);
       formData.append("quality", state.chosenQuality.toString());
 
-      const response = await axios.post("/upload", formData, {
+      const response = await axios.post("/api/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -288,6 +288,3 @@ function formatFileSize(bytes: number) {
   const gb = mb / 1024;
   return gb.toFixed(2) + " Go";
 }
-
-//Temporary comment
-//export default HomeComponent;
